@@ -7,7 +7,7 @@ function Card() {
       <img
         src={dad}
         alt="Dad"
-        className="w-32 h-32 rounded-full mx-auto shadow-lg mb-4 object-cover border-4 border-white"
+        className="w-64 h-auto rounded-xl shadow-lg animate__animated animate__fadeInDown sm:w-80 md:w-96 max-w-full"
       />
       <h1 className="text-2xl font-bold text-pink-700 mb-2">Happy Birthday Dad! 🎉</h1>
       <p className="text-gray-800 font-medium">
