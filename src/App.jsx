@@ -20,7 +20,6 @@ function App() {
       window.removeEventListener("click", playMusic);
     };
     window.addEventListener("click", playMusic);
-
     return () => window.removeEventListener("click", playMusic);
   }, []);
 
@@ -36,25 +35,24 @@ function App() {
         origin: { y: 0.6 },
       });
     }
-
     setShowCard(true);
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden 
-    bg-gradient-to-r from-pink-200 via-yellow-100 to-purple-200 animate-gradient-x bg-size-200">
-
-      {/* Music */}
+    <div className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden
+      bg-gradient-to-br from-pink-100 via-yellow-50 to-purple-100 transition-all duration-1000 px-4">
+      
+      {/* Background Music */}
       <audio ref={audioRef} src={song} loop preload="auto" />
 
-      {/* Balloons + emojis */}
+      {/* Particle Balloons & Emojis */}
       <Particles
         id="tsparticles"
         init={particlesInit}
         options={{
           fullScreen: { enable: true, zIndex: -1 },
           particles: {
-            number: { value: 30 },
+            number: { value: 35 },
             shape: {
               type: "char",
               character: {
@@ -64,12 +62,12 @@ function App() {
               },
             },
             size: {
-              value: 40,
-              random: { enable: true, minimumValue: 20 },
+              value: 32,
+              random: true,
             },
             move: {
               enable: true,
-              speed: 1.2,
+              speed: 1.5,
               direction: "top",
               outModes: { default: "out" },
             },
@@ -78,33 +76,35 @@ function App() {
         }}
       />
 
+      {/* Initial Cake */}
       {!showCard && (
         <>
-          <h2 className="text-xl md:text-2xl font-extrabold text-center mt-4 mb-6 text-purple-900 animate-pulse px-4">
+          <h2 className="text-lg sm:text-xl font-bold text-center mt-4 text-black animate-pulse">
             🎉 Tap the cake to celebrate! 🎉
           </h2>
           <img
             src={cake}
             alt="Birthday Cake"
             onClick={handleCakeClick}
-            className="cursor-pointer hover:scale-105 transition-transform duration-300"
-            style={{ maxWidth: "1280px", width: "90%", height: "auto" }}
+              className="cursor-pointer hover:scale-105 transition-transform duration-300"
+              style={{ maxWidth: "1150px", width: "100%", height: "auto" }}
           />
         </>
       )}
 
+      {/* Birthday Card */}
       {showCard && (
-        <div className="flex flex-col items-center text-center mt-8 px-4">
+        <div className="flex flex-col items-center text-center mt-8 animate-fade-in w-full px-4">
           <img
             src={dad}
             alt="Dad"
-            className="w-56 sm:w-64 md:w-72 h-auto rounded-full object-cover border-4 border-pink-400 shadow-xl"
+            className="w-48 sm:w-56 md:w-60 lg:w-64 h-auto rounded-2xl object-cover border-4 border-pink-400 shadow-lg"
           />
-          <h1 className="text-3xl md:text-4xl font-extrabold mt-6 text-purple-800">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-4 text-purple-800 leading-tight">
             Happy Birthday Daddy! 🎂
           </h1>
-          <p className="mt-4 text-base md:text-lg text-gray-800 max-w-md leading-relaxed">
-            Wishing you a day filled with love, laughter, and joy. I’m forever grateful for your love and support. ❤️
+          <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed max-w-sm sm:max-w-md">
+            Wishing you a day filled with love. I’m forever grateful for your love and support. ❤️
           </p>
         </div>
       )}
